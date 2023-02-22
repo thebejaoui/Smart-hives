@@ -1,0 +1,5 @@
+{
+    "mongo": {
+        "uri": "mongodb+srv://amine:amine@cluster0.yjmpdh4.mongodb.net/amine?retryWrites=true&w=majority"
+    }
+}
