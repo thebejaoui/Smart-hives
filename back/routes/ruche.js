@@ -72,7 +72,7 @@ router.delete('/delete/:id', function(req, res, next) {
           console.log(err)
       else {
           res.json(cont);
-          res.send('delete');
+          //res.send('delete');
           console.log('Ruche supprimé!!');
       }
 
