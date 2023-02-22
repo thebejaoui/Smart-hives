@@ -4,6 +4,31 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const mqtt = require('mqtt');
+const client = mqtt.connect('mqtt://adresse_IP_du_broker_MQTT:1883');
+
+
+client.subscribe('esp32_topic', function (err) {
+  if (err) {
+    console.log('Erreur lors de l\'abonnement au topic', err)
+  } else {
+    console.log('Abonnement au topic esp32_topic réussi')
+  }
+})
+
+client.publish('esp32_topic', 'Bonjour depuis Node.js')
+
+
+client.on('message', function (topic, message) {
+  console.log('Message reçu sur le topic', topic, ':', message.toString())
+})
+
+
+
+
+
+
+
 
 var rucheRouter = require('./routes/ruche');
 var indexRouter = require('./routes/index');

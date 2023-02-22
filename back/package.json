@@ -12,6 +12,7 @@
     "http-errors": "~1.6.3",
     "mongoose": "^6.6.7",
     "morgan": "~1.9.1",
+    "mqtt": "^4.3.7",
     "serialport": "^10.5.0",
     "twig": "~0.10.3"
   }
