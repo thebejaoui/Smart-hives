@@ -1,5 +1,5 @@
 var express = require('express');
-const reclamation = require('../model/reclamation');
+const reclamation = require('../model/reclamation.model');
 var router = express.Router();
 var Ruche = require('../model/reclamation.model');
 
