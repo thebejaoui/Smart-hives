@@ -9,7 +9,7 @@ var rucheRouter = require('./routes/ruche');
 var employeRouter = require('./routes/employe');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var usersRouter = require('./routes/reclamation');
+var reclamationRouter = require('./routes/reclamation');
 
 
 
@@ -35,7 +35,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/employe', employeRouter);
 app.use('/ruche',rucheRouter );
-app.use('/reclamation',recalmationRouter );
+app.use('/reclamation',reclamationRouter );
 
 
 // catch 404 and forward to error handler
