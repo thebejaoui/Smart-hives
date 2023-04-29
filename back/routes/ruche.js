@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var Ruche = require('../model/ruche.model');
+var Ruche = require('../models/ruche');
 
 
 router.post('/add', function(req, res, next) {
-  var ruche = new Ruche({libele: req.body.libele, humidite: req.body.humidite,temperature: req.body.temperature,poids: req.body.poids,motion: req.body.motion});
+  var ruche = new Ruche({libele: req.body.libele, humidite: req.body.humidite,temperature: req.body.temperature,poids: req.body.poids,image: req.body.image,motion: req.body.motion,userid: req.body.userid});
   ruche.save((err, newContact) => {
       if (err) {
           console.log('There is an error', err);
@@ -33,6 +33,20 @@ router.get('/display', function(req, res, next) {
     );
   });
 
+  router.get('/displayruches/:userId', function(req, res, next) {
+    const userId = req.params.userId;
+    Ruche.find({ userid: userId }, function(err, ruches) {
+      if (err) {
+        return next(err);
+      }
+      res.json(ruches);
+    });
+  });
+
+
+
+
+
   
 
   router.get('/search', function(req, res, next) {
@@ -46,6 +60,7 @@ router.get('/display', function(req, res, next) {
 });
 
 
+
 router.put('/edit/:id', function(req, res, next) {
     Ruche.findById(req.params.id, (err, cont) => {
       if(err) {
@@ -56,7 +71,9 @@ router.put('/edit/:id', function(req, res, next) {
       cont.humidite = req.body.humidite;
       cont.temperature = req.body.temperature;
       cont.poids = req.body.poids;
+      cont.image = req.body.image;
       cont.motion = req.body.motion;
+      cont.userid= req.body.userid;
       cont.save((err, updatedCont) => {
         console.log("updated ruche !");
         res.send('updated');
@@ -78,8 +95,4 @@ router.delete('/delete/:id', function(req, res, next) {
 
   });
 });
-
-
-
-
   module.exports = router;
